@@ -1,12 +1,13 @@
 # Imports
-from get_managed_accounts.api import execute_query, RateLimiter
-from get_managed_accounts.api.queries import GET_MANAGED_ACCOUNTS as get
-from get_managed_accounts.data import NewRelicAccountsHandler
-from get_managed_accounts.utils import setup_logger
+# from get_managed_accounts.api import execute_query, RateLimiter
+# from get_managed_accounts.api.queries import GET_MANAGED_ACCOUNTS as get
+# from get_managed_accounts.data import NewRelicAccountsHandler
+from cancel_managed_accounts.utils import setup_logger
 from pathlib import Path
-from get_managed_accounts.csv_handlers import AccountListComparer, write_results_to_csv
+from cancel_managed_accounts.data import AccountListComparer, write_results_to_csv
 
-
+# Create logger for the main module
+logger = setup_logger(__name__)
 
 
 def main():
@@ -15,7 +16,9 @@ def main():
 
     # Define file paths
     base_path = Path(__file__).parent
-    data_path = base_path / "cancel_managed_accounts" / "data" / "csv"
+    # data_path = base_path / "cancel_managed_accounts" / "data" / "csv"
+    data_path = base_path  / "data" / "csv"
+
 
     # The file with the list of accounts to check
     main_file = data_path / "pantheon_cancel_account_list.csv"
@@ -45,7 +48,7 @@ def main():
         print(f"\nResults written to {output_dir}")
 
     except Exception as e:
-        logging.error(f"Error during comparison: {str(e)}")
+        logger.error(f"Error during comparison: {str(e)}")
         raise
 
 
