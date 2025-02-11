@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "nerdgraph-get-managed-accounts"
+version = "0.1.0"
+description = "A project to get managed accounts using NerdGraph"
+authors = ["Brett Larson <larson.brett.s@gmail.com>"]
+license = "MIT"
+packages = [
+    { include = "get_managed_accounts", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.32.3"
+python-dotenv = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+get-accounts = "cancel_managed_accounts.main:main"
