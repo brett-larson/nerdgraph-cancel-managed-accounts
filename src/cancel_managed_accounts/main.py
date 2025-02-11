@@ -21,7 +21,7 @@ def main():
 
 
     # The file with the list of accounts to check
-    main_file = data_path / "pantheon_cancel_account_list.csv"
+    main_file = data_path / "cancel_account_list_actual.csv"
 
     # The files to check against (which have the complex structure)
     comparison_files = [
