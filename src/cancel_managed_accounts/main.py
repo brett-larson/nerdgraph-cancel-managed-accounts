@@ -14,6 +14,8 @@ def main():
 
     logger.info("Starting the application.")
 
+
+
     # Initialize the account comparer
     comparer = AccountListComparer()
 
