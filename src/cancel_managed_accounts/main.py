@@ -1,24 +1,26 @@
 # Imports
-# from get_managed_accounts.api import execute_query, RateLimiter
-# from get_managed_accounts.api.queries import GET_MANAGED_ACCOUNTS as get
-# from get_managed_accounts.data import NewRelicAccountsHandler
-from cancel_managed_accounts.utils import setup_logger
 from pathlib import Path
+from cancel_managed_accounts.utils import setup_logger
 from cancel_managed_accounts.data import AccountListComparer, write_results_to_csv
 
 # Create logger for the main module
 logger = setup_logger(__name__)
 
-
 def main():
+    """
+    Main function to execute the core logic of the application.
+    :return: None
+    """
+
+    logger.info("Starting the application.")
+
     # Initialize the account comparer
     comparer = AccountListComparer()
 
     # Define file paths
     base_path = Path(__file__).parent
-    # data_path = base_path / "cancel_managed_accounts" / "data" / "csv"
     data_path = base_path  / "data" / "csv"
-
+    logger.info(f"Path to location of CSV files: {data_path}")
 
     # The file with the list of accounts to check
     main_file = data_path / "cancel_account_list_actual.csv"
@@ -50,6 +52,8 @@ def main():
     except Exception as e:
         logger.error(f"Error during comparison: {str(e)}")
         raise
+
+    logger.info("Application complete.")
 
 
 if __name__ == "__main__":
